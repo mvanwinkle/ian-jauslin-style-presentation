@@ -1,6 +1,6 @@
-*.pdf
-*.aux
-*.cls
-*.log
-*.out
-*.synctex.gz
+./*.pdf
+./*.aux
+./*.log
+./*.out
+./*.synctex.gz
+./*.cls
