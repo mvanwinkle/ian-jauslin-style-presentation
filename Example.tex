@@ -1,0 +1,63 @@
+\documentclass{ian-presentation}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{xcolor}
+
+
+\definecolor{ipurple}{HTML}{4B0082}
+\definecolor{iyellow}{HTML}{DAA520}
+\definecolor{igreen}{HTML}{32CD32}
+\definecolor{iblue}{HTML}{4169E1}
+\definecolor{ired}{HTML}{DC143C}
+
+\definecolor{highlight}{HTML}{328932}
+\definecolor{highlight}{HTML}{981414}
+
+\begin{document}
+
+\pagestyle{empty}
+\hbox{}\vfil
+\bf\Large
+\hfil Example Presentation Line 1\par
+\hfil Line 2 of title
+\vfil
+\large
+\hfil Author of Presentation
+\normalsize
+\vfil
+\rm
+\hfil collaborators: {\bf A.B.\-~Collaborator}\par
+\vfil
+% Referencing arXiv:
+% See: https://arxiv.org/help/arxiv_identifier
+% Hopefully nothing bad will happen from using an identifier like
+% 9876.54321 .  If there's an example identifier that can be used
+% that won't throw things off, then good.
+%arXiv:{\tt\ \parbox[b]{3cm}{
+%  \href{https://arxiv.org/abs/9876.54321}{9876.54321}\par
+%}}
+\hfill{\tt \href{http://example.com}{http://example.com}}
+\eject
+
+\setcounter{page}1
+%\addtocounter{page}{-1}
+\pagestyle{plain}
+
+%%% Slides Go Here
+%%%%%%%%%%%%%%%%%%
+\title{Example Figure}
+
+\hfil\includegraphics[height=5.5cm]{example_figure.pdf}
+\vfill
+\eject
+
+\title{Conclusions and outlook}
+\begin{itemize}
+  \item Conclusion 1
+  \item Conclusion 2
+\end{itemize}
+\vfill
+
+\end{document}
