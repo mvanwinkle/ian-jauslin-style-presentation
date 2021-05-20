@@ -1,13 +1,5 @@
 MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
-
 all: example_figure.pdf example_figure2.pdf
-%.pdf : %.tikz.tex
-	pdflatex -jobname $(basename $@) --file-line-error $<
-
-%.tikz.tex : %.gnuplot %.dat
-	gnuplot $< > $@
-
-%.gnuplot : ;
 
 example_figure.dat:
 	$(MAKEFILE_PATH)/generate.sh > $@
@@ -15,8 +7,15 @@ example_figure.dat:
 example_figure2.dat:
 	$(MAKEFILE_PATH)/generate.sh > $@
 
-install: $(PDFS)
-	cp $^ $(INSTALLDIR)/
+# Everything below is generic
+
+%.pdf : %.tikz.tex
+	pdflatex -jobname $(basename $@) --file-line-error $<
+
+%.tikz.tex : %.gnuplot %.dat
+	gnuplot $< > $@
+
+%.gnuplot : ;
 
 clean-aux:
 	-rm -f *.aux
