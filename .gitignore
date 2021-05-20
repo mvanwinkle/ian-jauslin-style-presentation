@@ -1,6 +1,54 @@
-./*.pdf
-./*.aux
-./*.log
-./*.out
-./*.synctex.gz
-./*.cls
+## Build artifacts
+
+/*.pdf
+/*.aux
+/*.log
+/*.out
+/*.synctex.gz
+/*.cls
+
+### Programming Languages
+
+## Java
+/src/java/**/*.class
+
+## Rakudo / Perl6
+/src/**/.precomp
+
+## PHP
+/vendor/
+
+## Python
+*.swp
+__pycache__/
+*.pyc
+*.egg-info
+/dist
+
+## Ruby
+*.gem
+.bundle
+
+# Editors
+
+## Dia
+*.dia.autosave
+
+## Emacs
+\#*\#
+.\#*
+
+
+## Vi / Vim
+*.swp
+
+# Filesystem Artifacts
+
+## Mac
+
+.DS_Store
+
+## NFS
+
+.nfs*
+
