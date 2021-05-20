@@ -24,4 +24,4 @@ set pointsize 0.6
 
 # set label "Random Numbers 0-59" textcolor "#32CD32"
 
-plot "example.dat" using 1:2 w l ls 1
+plot "example_figure.dat" using 1:2 w l ls 1

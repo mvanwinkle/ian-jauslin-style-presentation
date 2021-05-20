@@ -3,7 +3,7 @@ MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
 PDFS=$(addsuffix .pdf, $(PROJECTNAME))
 
-DATS= example.dat
+DATS= example_figure.dat
 
 all: $(PDFS)
 
@@ -11,7 +11,7 @@ $(PDFS): $(DATS)
 	gnuplot $(patsubst %.pdf, %.gnuplot, $@) > $(patsubst %.pdf, %.tikz.tex, $@)
 	pdflatex -jobname $(basename $@) -file-line-error $(patsubst %.pdf, %.tikz.tex, $@)
 
-example.dat:
+example_figure.dat:
 	$(MAKEFILE_PATH)/generate.sh > $@
 
 install: $(PDFS)
