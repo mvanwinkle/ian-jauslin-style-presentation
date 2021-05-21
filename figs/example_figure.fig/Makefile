@@ -1,6 +1,8 @@
 MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
+
 all: example_figure.pdf example_figure2.pdf
 
+# Example for how data files are generated:
 example_figure.dat:
 	$(MAKEFILE_PATH)/generate.sh > $@
 
@@ -12,33 +14,4 @@ example_figure2.dat:
 
 %.gnuplot : ;
 
-# Everything below is generic
-
-# This implements a make pipeline, diagrammed below:
-#     something.dat
-#                  \
-#                   --> something.tikz.tex --> something.pdf
-#                  /
-# something.gnuplot
-#
-# In your Makefile you specify:
-#	* all: something.pdf [ something2.pdf ...]
-#	* something.dat: (recipe for something.dat)
-
-
-%.pdf : %.tikz.tex
-	pdflatex -jobname $(basename $@) --file-line-error $<
-
-%.tikz.tex : %.gnuplot %.dat
-	gnuplot $< > $@
-
-clean-aux:
-	-rm -f *.aux
-clean-pdf:
-	-rm -f *.pdf
-clean-tikz-tex:
-	-rm -f *.tikz.tex
-clean-log:
-	rm -f *.log
-
-clean: clean-aux clean-pdf clean-tikz-tex clean-log
+include $(MAKEFILE_PATH)/../make_includes/tikz_tex_pdf_pipeline.gmk
