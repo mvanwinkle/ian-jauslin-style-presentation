@@ -1,0 +1,16 @@
+# This implements a make pipeline, diagrammed below:
+#     something.dot -> something.pdf
+#	* all: something.pdf [ something2.pdf ...]
+#	* something.dot: (recipe for something.dot)
+
+# On ubuntu: sudo apt-get install graphviz
+
+%.pdf : %.dot
+	dot -Tpdf $< > $@
+
+clean-pdf:
+	-rm -f *.pdf
+
+clean: \
+	clean-pdf \
+	clean-misc
