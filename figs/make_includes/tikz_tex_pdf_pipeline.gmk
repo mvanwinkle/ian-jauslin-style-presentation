@@ -25,4 +25,9 @@ clean-tikz-tex:
 clean-log:
 	rm -f *.log
 
-clean: clean-aux clean-pdf clean-tikz-tex clean-log
+clean: \
+	clean-aux \
+	clean-pdf \
+	clean-tikz-tex \
+	clean-log \
+	clean-misc

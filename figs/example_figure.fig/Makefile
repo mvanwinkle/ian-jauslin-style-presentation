@@ -1,3 +1,5 @@
+# This allows you to reference files relative to 
+# this particular file.
 MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
 all: example_figure.pdf example_figure2.pdf
@@ -14,4 +16,9 @@ example_figure2.dat:
 
 %.gnuplot : ;
 
+# If you require special cleanup for this directory
+# put it here:
+clean-misc: ;
+
+# This is where you include the rules to do the pipeline
 include $(MAKEFILE_PATH)/../make_includes/tikz_tex_pdf_pipeline.gmk
