@@ -1,0 +1,40 @@
+# This implements a make pipeline, diagrammed below:
+#     something.dot -> something.pdf
+#	* all: something.pdf [ something2.pdf ...]
+#	* something.dot: (recipe for something.dot)
+
+# On ubuntu: sudo apt-get install graphviz
+
+# Set this with no prereqs to prevent automatic deletion of files
+.SECONDARY:
+
+%.cmapx.html : %.png %.cmapx
+	echo "<html>" > $@
+	echo "<body>" >> $@
+	graph_name=$(basename $<) ; \
+	png_name=$< ;\
+	echo "<img src=\"$${png_name}\" usemap=\"#$${graph_name}\"/>" >> $@
+	cat $(patsubst %.png, %.cmapx, $<) >> $@
+	echo "</body>" >> $@
+	echo "</html>" >> $@
+
+%.png : %.dot
+	dot -Tpng -o $@ $<
+
+%.cmapx : %.dot
+	dot -Tcmapx -o $@ $<
+
+clean-png:
+	-rm -f *.png
+
+clean-cmapx:
+	-rm -f *.cmapx
+
+clean-html:
+	-rm -f *.html
+
+clean: \
+	clean-png \
+	clean-cmapx \
+	clean-html \
+	clean-misc

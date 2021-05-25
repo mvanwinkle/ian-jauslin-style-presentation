@@ -1,0 +1,6 @@
+digraph example {
+	"www.example.com" [ href="http://example.com" ];
+	"www.example.com/hello" [ href="http://www.example.com/hello" ];
+
+	"www.example.com" -> "www.example.com/hello"
+}
